@@ -5,13 +5,13 @@ import { Logo } from '../Logo/Logo';
 import { Subtitle } from '../Subtitle/Subtitle';
 import { s } from './Header.style';
 
-export function Header({ txtTitle, txtSubtitle, }) {
+export function Header({ txtTitle, txtSubtitle, subtitle }) {
     return (
 
         <View style = { s.container }>
             <Title txtTitle={txtTitle}/>
             <Logo />
-            <Subtitle txtSubtitle={txtSubtitle}/>
+            <Subtitle txtSubtitle={txtSubtitle} subtitle = { subtitle }/>
         </View>
 
     )

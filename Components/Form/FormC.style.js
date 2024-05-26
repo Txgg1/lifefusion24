@@ -2,36 +2,38 @@ import { StyleSheet } from "react-native";
 
 export const s = StyleSheet.create({
   container: {
-    width: "95%",
+    width: "100%",
+    alignItems:"center",
     justifyContent: "center",
   },
   txtTitle: {
-    width: 280,
-    marginTop: 60,
-    marginHorizontal: 95,
+    marginTop:20,
+    width: 380,
     textTransform: "uppercase",
     color: "#450045",
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: "bold",
   },
   txtSubtitle: {
-    width: 220,
-    marginHorizontal: 125,
-    marginBottom: 35,
+    textAlign:"center",
+    width: 300,
+    marginBottom: 15,
     fontStyle: "italic",
     fontSize: 18,
   },
   txtInput: {
-    width:300,
+    width:340,
+    height:40,
     color:'#450045',
     textAlign:'left',
     paddingStart:25,
-    marginVertical:20,
-    marginHorizontal:90,
+    marginVertical:15,
     fontSize:15,
+    fontStyle:"italic",
+    fontWeight:"bold",
+    color:"#450045",
     borderWidth: 3,
     borderColor: '#450045',
-    borderRadius: 20,
-    padding: 5
+    borderRadius: 25,
   }
 });

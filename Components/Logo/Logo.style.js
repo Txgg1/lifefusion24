@@ -3,10 +3,9 @@ import { StyleSheet } from "react-native";
 export const s = StyleSheet.create ({
 
     image : {        
-        marginVertical:30,
-        marginHorizontal:170,
+        marginVertical:0,
         width: 120,
-        height: 100,
-        borderRadius:10,
+        height: 120,
+        resizeMode:"contain",
     }
 })
