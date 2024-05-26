@@ -2,6 +2,8 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer, TransitionPresets } from "@react-navigation/native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { Provider } from "react-redux";
+import Store from "./store/configStore.jsx"
 
 /*  - ANCIENS SCREENS -
     import { ConnectScreen } from "./Screens/ConnectScreen/ConnectScreen.jsx";
@@ -23,6 +25,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={s.container}>
+      <Provider store={Store}>
         <NavigationContainer >
           <Stack.Navigator>
             {
@@ -40,6 +43,7 @@ export default function App() {
             <Stack.Screen name="PartnerShip1" component={PartnerShip1Screen} options={{ headerShown: false }} />
           </Stack.Navigator>
         </NavigationContainer>
+        </Provider>
       </SafeAreaView>
     </SafeAreaProvider>
   );

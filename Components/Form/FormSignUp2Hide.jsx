@@ -1,6 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { connect } from "react-redux";
+
 
 import { BigButton } from '../Button/BigButton';
 

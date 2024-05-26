@@ -6,6 +6,8 @@ import { Title } from "../Title/Title";
 import { InputText } from "../InputText/InputText";
 import { Button } from "../Button/Button";
 import { s } from "./FormSignUp3Data1.style";
+import { connect } from "react-redux";
+
 
 export function FormSignUp3Data1() {
   const navigation = useNavigation();

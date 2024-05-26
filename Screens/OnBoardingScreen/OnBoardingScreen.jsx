@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { Header } from "../../Components/Header/Header";
-import { FormOnBoarding } from "../../Components/Form/FormOnBoarding";
+import FormOnBoarding from "../../Components/Form/FormOnBoarding";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons';
 import { s } from './OnBoardingScreen.style';

@@ -15,7 +15,7 @@ export function FormC() {
     const handleInscriptionPress = () => {
     navigation.navigate('SignUp1');
   };
-
+  
     const handleConnexionPress = () => {
         navigation.push('SignUp2Hide'); // Remplacer 'ConnectScreen' par le nom de votre écran de connexion
     };
