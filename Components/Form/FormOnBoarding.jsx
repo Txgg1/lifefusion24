@@ -1,3 +1,4 @@
+// FormOnBoarding.jsx
 import React, { useState } from 'react';
 import { View, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -8,8 +9,9 @@ import { Button } from '../Button/Button';
 import { s } from './FormOnBoarding.style';
 import config from '../1rootconfig/ipconfig';
 import { connect } from 'react-redux';
+import { setUser } from '../../store/reducer/UserReducer'; // Assurez-vous que ce chemin est correct
 
-function FormOnBoarding() {
+function FormOnBoarding({ setUser }) {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,8 +23,7 @@ function FormOnBoarding() {
     const handleConnexionPress = () => {
         console.log("Email saisi avant fetch :", email);
         console.log("Mot de passe saisi avant fetch :", password);
-        // Effectuer la requête fetch
-        fetch(config + '/utilisateurs')
+        fetch(`${config}/utilisateurs`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
@@ -30,15 +31,13 @@ function FormOnBoarding() {
                 return response.json();
             })
             .then(data => {
-                // console.log("Données récupérées de la base de données :", data);
-    
-                const foundUser = data.find((utilisateurs) => utilisateurs.email === email && utilisateurs.password === password);
-                console.log("email",email)
-                console.log("password",password)
+                const foundUser = data.find(utilisateurs => utilisateurs.email === email && utilisateurs.password === password);
+                console.log("email", email);
+                console.log("password", password);
                 console.log("Utilisateur trouvé :", foundUser);
-    
+
                 if (foundUser) {
-                    // Connexion réussie, rediriger vers le tableau de bord
+                    setUser(foundUser); // Met à jour le store Redux avec l'utilisateur trouvé
                     navigation.navigate('SignUp2Hide');
                 } else {
                     Alert.alert('Erreur', 'E-mail ou mot de passe incorrect');
@@ -73,8 +72,8 @@ function FormOnBoarding() {
     );
 }
 
-const mapStateToProps = (state) => {
-    return state;
-};
+const mapDispatchToProps = (dispatch) => ({
+    setUser: (user) => dispatch(setUser(user))
+});
 
-export default connect(mapStateToProps)(FormOnBoarding);
+export default connect(null, mapDispatchToProps)(FormOnBoarding);

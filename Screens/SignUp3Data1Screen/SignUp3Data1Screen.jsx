@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Button} from "react-native";
 import { Header2 } from "../../Components/Header2/Header2";
-import { FormSignUp3Data1 } from "../../Components/Form/FormSignUp3Data1";
+import FormSignUp3Data1 from "../../Components/Form/FormSignUp3Data1";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons';
 import { s } from './SignUp3Data1Screen.style';

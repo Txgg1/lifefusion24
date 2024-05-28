@@ -1,7 +1,7 @@
 import React from "react";
 import { View, } from "react-native";
 import { Title } from "../Title/Title";
-import { Identification } from "../Identification/Identification";
+import Identification from "../Identification/Identification";
 import { Photo } from "../Photo/Photo";
 import { MiniLogo } from "../MiniLogo/MiniLogo";
 import { s } from "./Header2.style";
