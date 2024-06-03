@@ -14,76 +14,103 @@ function FormSignUp3Data1({ user }) {
 
   const [civilite, setCivilite] = useState(user.civilite || 'Monsieur');
   const [username, setUsername] = useState(user.username || '');
-  // const [prenom, setPrenom] = useState(user.prenom || '');
   const [address, setAddress] = useState(user.address || '');
-  // const [codePostal, setCodePostal] = useState(user.codePostal || '');
-  // const [ville, setVille] = useState(user.ville || '');
   const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber || '');
   const [email, setEmail] = useState(user.email || '');
   const [password, setPassword] = useState('');
   const [passwordVerification, setPasswordVerification] = useState('');
 
   const handleConnexionPress = () => {
-    navigation.push("OnBoarding"); // Remplacer 'OnBoarding' par le nom de votre écran de connexion
+    navigation.push("OnBoarding");
   };
 
   const handleInscriptionPress = () => {
-    navigation.push("SignUp1"); // Remplacer 'SignUp1' par le nom de votre écran d'inscription
+    navigation.push("SignUp1");
   };
 
   const handleModifierPress = () => {
+    if (!password || !passwordVerification) {
+      Alert.alert('Erreur', 'Veuillez remplir tous les champs de mot de passe');
+      return;
+    }
+
     if (password !== passwordVerification) {
       Alert.alert('Erreur', 'Les mots de passe ne correspondent pas');
       return;
     }
 
-    const userData = {
-      civilite,
-      username,
-      // prenom,
-      address,
-      // codePostal,
-      // ville,
-      phoneNumber,
-      email,
-      ...(password && { password }), // Ajouter le mot de passe uniquement s'il a été modifié
-    };
+    console.log("Vérification du mot de passe en cours...");
 
-    console.log("Données utilisateur à envoyer :", userData);
-    console.log("ID de l'utilisateur :", user.userId);
-
-    if (user.userId === undefined) {
-      Alert.alert('Erreur', 'ID de l\'utilisateur non défini');
-      return;
-    }
-
-    fetch(`${config}/utilisateurs/${user.userId}`, {
-      method: 'PATCH',
+    fetch(`${config}/verify-password`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(userData)
+      body: JSON.stringify({ email: user.email, password })
     })
     .then(response => {
-      // console.error("Response status code:", response.status); // Ajout du code de statut de réponse
+      console.log("Réponse de vérification du mot de passe reçue :", response);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       return response.json();
     })
     .then(data => {
-      console.log("Données mises à jour reçues :", data);
-      Alert.alert('Succès', 'Vos données ont été mises à jour');
-      setCivilite(data.civilite);
-      setUsername(data.username);
-      setAddress(data.address);
-      setPhoneNumber(data.phoneNumber);
-      setEmail(data.email);
-      // navigation.push("SignUp2Hide"); // Remplacer 'SomeNextScreen' par le nom de votre écran suivant
+      console.log("Résultat de la vérification du mot de passe :", data);
+      if (data.valid) {
+        const userData = {
+          civilite,
+          username,
+          address,
+          phoneNumber,
+          email,
+          password,
+        };
+
+        console.log("Données utilisateur à envoyer :", userData);
+        console.log("ID de l'utilisateur :", user.userId);
+
+        if (user.userId === undefined) {
+          Alert.alert('Erreur', 'ID de l\'utilisateur non défini');
+          return;
+        }
+
+        fetch(`${config}/utilisateurs/${user.userId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        })
+        .then(response => {
+          console.log("Réponse de mise à jour des données reçue :", response);
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log("Données mises à jour reçues :", data);
+          Alert.alert('Succès', 'Vos données ont été mises à jour');
+          setCivilite(data.civilite);
+          setUsername(data.username);
+          setAddress(data.address);
+          setPhoneNumber(data.phoneNumber);
+          setEmail(data.email);
+          setPassword('');
+          setPasswordVerification('');
+        })
+        .catch(error => {
+          console.error('Erreur lors de la mise à jour des données:', error);
+          Alert.alert('Erreur', 'Une erreur est survenue lors de la mise à jour des données');
+        });
+      } else {
+        Alert.alert('Erreur', 'Le mot de passe est incorrect');
+      }
     })
     .catch(error => {
-      console.error('Erreur lors de la mise à jour des données:', error);
-      Alert.alert('Erreur', 'Une erreur est survenue lors de la mise à jour des données');
+      console.error('Erreur lors de la vérification du mot de passe:', error);
+      Alert.alert('Erreur', 'Une erreur est survenue lors de la vérification du mot de passe');
     });
   };
 
@@ -96,12 +123,7 @@ function FormSignUp3Data1({ user }) {
           <Subtitle txtEtape="etape 1 / 2" />
         </View>
         <InputText placeholder="Votre Nom et Prénom" style={s.input} value={username} onChangeText={setUsername} />
-        {/* <InputText placeholder="Votre Prénom" style={s.input} value={prenom} onChangeText={setPrenom} /> */}
         <InputText placeholder="Votre Adresse" style={s.input} value={address} onChangeText={setAddress} />
-        {/* <View style={s.row}>
-          <InputText placeholder="Code Postal" style={[s.input, s.cp]} value={codePostal} onChangeText={setCodePostal} />
-          <InputText placeholder="Ville" style={[s.input, s.ville]} value={ville} onChangeText={setVille} />
-        </View> */}
         <InputText placeholder="Votre Téléphone" style={[s.input, s.smallInput]} value={phoneNumber} onChangeText={setPhoneNumber} />
         <InputText placeholder="Votre Email" style={s.input} value={email} onChangeText={setEmail} />
         <InputText placeholder="Votre Password" style={s.input} value={password} onChangeText={setPassword} secureTextEntry={true} />

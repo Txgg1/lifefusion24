@@ -35,7 +35,7 @@ export function PartnerShip1Screen() {
 
   return (
     <View style = { s.container }>
-      <Header2/>
+      <Header2 txtTitle="Collaborateur n°" txtSubtitle="1237"/>
       <FormPartnerShip1 />
     </View>
   );

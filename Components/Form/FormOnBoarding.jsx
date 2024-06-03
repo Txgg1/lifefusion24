@@ -38,7 +38,7 @@ function FormOnBoarding({ setUser }) {
 
                 if (foundUser) {
                     setUser(foundUser); // Met à jour le store Redux avec l'utilisateur trouvé
-                    navigation.navigate('SignUp2Hide');
+                    navigation.navigate('SignUp2Show');
                 } else {
                     Alert.alert('Erreur', 'E-mail ou mot de passe incorrect');
                 }

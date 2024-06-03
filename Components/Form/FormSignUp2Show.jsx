@@ -13,7 +13,7 @@ export function FormSignUp2Show() {
     };
 
     const handleSharePress = () => {
-        navigation.push('OnBoarding'); // Remplacer 'RegisterScreen' par le nom de votre écran d'inscription
+        navigation.push('PartnerShip1'); // Remplacer 'RegisterScreen' par le nom de votre écran d'inscription
     };
 
     const handleShipPress = () => {
