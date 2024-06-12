@@ -9,7 +9,7 @@ export function FormSignUp2Show() {
     const navigation = useNavigation();
 
     const handleData1Press = () => {
-        navigation.push('OnBoarding'); // Remplacer 'ConnectScreen' par le nom de votre écran de connexion
+        navigation.push('SignUp3Data1'); // Remplacer 'ConnectScreen' par le nom de votre écran de connexion
     };
 
     const handleSharePress = () => {
