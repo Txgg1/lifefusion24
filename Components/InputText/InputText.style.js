@@ -3,17 +3,16 @@ import { StyleSheet } from "react-native";
 export const s = StyleSheet.create ({
 
     txtInput : {
-      width:300,
+    textAlign:"center",
     color:'#450045',
     textAlign:'left',
-    paddingStart:25,
+    paddingStart:15,
     marginVertical:20,
-    marginHorizontal:90,
     fontSize:15,
+    padding:5,
     borderWidth: 3,
     borderColor: '#450045',
-    borderRadius: 20, // Si vous souhaitez arrondir les coins
-    padding: 5
+    borderRadius: 25,
     },
 
 })

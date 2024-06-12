@@ -3,33 +3,41 @@ import { StyleSheet } from "react-native";
 export const s = StyleSheet.create ({
 
 btnPurple : {
-    width:220,
+    width:280,
+    height:40,
     backgroundColor:'#450045',
-    marginTop:40,
-    marginHorizontal:130,
-    fontSize:15,
+    marginTop:55,
     borderRadius: 25,
-    padding: 10
+
+
 },
 txtPurple : {
     color: '#450045',
-    textAlign:'center'
+    fontSize:20,
+    fontWeight:"bold",
+    textTransform:"uppercase",
+    textAlign:'center',
+    padding:2,
 },
 btnWhite : {
-    width:220,
+    width:280,
     backgroundColor:'white',
-    marginVertical:40,
-    marginHorizontal:130,
-    fontSize:15,
+    marginVertical:30,
     borderWidth: 2,
     borderColor: '#450045',
     borderRadius: 25,
-    padding: 10
+    
 },
 txtWhite : {
     color: 'white',
-    textAlign:'center'
+    fontSize:20,
+    fontWeight:"bold",
+    textTransform:"uppercase",
+    textAlign:'center',
+    padding:2,
+},
+btnHeight: {
+    height:40,
 },
 
-
-})
+});
