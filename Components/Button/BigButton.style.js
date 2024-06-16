@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { wrap } from '../../node_modules/react-native/node_modules/regenerator-runtime/runtime';
 
 export const s = StyleSheet.create ({
 
@@ -10,10 +11,11 @@ export const s = StyleSheet.create ({
 btnPurple : {
     alignItems:"center",
     justifyContent:"center",
-    width:300,
-    height:120,
+    width:220,
+    height:80,
+    marginVertical:10,
     backgroundColor:'#450045',
-    borderRadius: 15,
+    borderRadius: 10,
 },
 txtPurple : {
     color: '#450045',
@@ -21,19 +23,19 @@ txtPurple : {
     fontWeight:"bold",
     textTransform:"uppercase",
     textAlign:'center',
-    padding:25,    
+    padding:5,    
 },
 btnWhite : {
     alignItems:"center",
     justifyContent:"center",
-    width:300,
-    height:120,
-    backgroundColor:'white',
-    marginVertical:30,
+    width:220,
+    height:80,
+    backgroundColor:'transparent',
+    marginVertical:10,
     marginHorizontal:130,
     borderWidth: 2,
     borderColor: '#450045',
-    borderRadius: 15,
+    borderRadius: 10,
 },
 txtWhite : {
     color: 'white',
@@ -41,7 +43,10 @@ txtWhite : {
     fontWeight:"bold",
     textTransform:"uppercase",
     textAlign:"center",
-    padding: 40,
+    padding: 5,
 },
+disabledButton: {
+    opacity: 0.4,
+  }
 
 })

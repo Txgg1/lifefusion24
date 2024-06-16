@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 
 export const s = StyleSheet.create({
   container: {
@@ -12,7 +12,7 @@ export const s = StyleSheet.create({
   },
   scrollContainer: {
     flex: 1,
-    marginBottom: 20, // Ajoute un espace en bas pour éviter la superposition avec les boutons
+    marginBottom: 20, 
   },
   input: {
     marginVertical: 10,
@@ -40,11 +40,12 @@ export const s = StyleSheet.create({
     justifyContent: "center",
   },
   btnPurple: {
-    width: 280,
-    // height: 40,
-    marginVertical: 15,
-    backgroundColor: '#450045',
+    width:"65%",
+    marginTop:"-25%",
+    height:30,
+    backgroundColor:'#450045',
     borderRadius: 25,
+    justifyContent:'center',
   },
   txtPurple: {
     color: '#450045',
@@ -82,4 +83,16 @@ export const s = StyleSheet.create({
     justifyContent: 'center',
     paddingBottom: 20,
   },
+  txtInput: {
+    width: '100%',
+    textAlign: "center",
+    color: '#450045',
+    textAlign: 'left',
+    paddingStart: 15,
+    fontSize: 13,
+    fontStyle:"italic",
+    borderWidth: 1,
+    borderColor: '#450045',
+    borderRadius: 20,
+  }
 });

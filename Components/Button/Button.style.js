@@ -3,34 +3,35 @@ import { StyleSheet } from "react-native";
 export const s = StyleSheet.create ({
 
 btnPurple : {
-    width:280,
-    height:40,
+    width:"65%",
+    height:30,
     backgroundColor:'#450045',
-    marginTop:55,
     borderRadius: 25,
+    justifyContent:'center',
 
 
 },
 txtPurple : {
     color: '#450045',
-    fontSize:20,
+    fontSize:15,
     fontWeight:"bold",
     textTransform:"uppercase",
     textAlign:'center',
     padding:2,
 },
 btnWhite : {
-    width:280,
-    backgroundColor:'white',
-    marginVertical:30,
-    borderWidth: 2,
+    width:"65%",
+    height:30,
+    backgroundColor:'transparent',
+    borderWidth: 1,
     borderColor: '#450045',
     borderRadius: 25,
+    justifyContent:'center',
     
 },
 txtWhite : {
     color: 'white',
-    fontSize:20,
+    fontSize:15,
     fontWeight:"bold",
     textTransform:"uppercase",
     textAlign:'center',

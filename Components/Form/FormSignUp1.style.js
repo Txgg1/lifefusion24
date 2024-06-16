@@ -2,10 +2,20 @@ import { StyleSheet } from "react-native";
 
 export const s = StyleSheet.create({
   container: {
-    marginTop:50,
-    width: "100%",
-    alignItems:"center",
-    justifyContent: "center",
+    marginTop:"8%",
+    marginBottom:"25%",
+    width:"100%",
+    flex:1,
+    justifyContent: 'space-between',
+  },
+  formInput: {
+    width:"80%",
+    marginHorizontal:"auto",
+    alignItems: 'center',
+  },
+  formButtons: {
+    marginTop:"10%",
+    alignItems: 'center',
   },
   txtTitle: {
     marginTop: 20,
@@ -23,19 +33,14 @@ export const s = StyleSheet.create({
     fontSize: 18,
   },
   txtInput: {
-    width:340,
-    height:40,
-    color:'#450045',
-    textAlign:'left',
-    paddingStart:25,
-    marginVertical:15,
-    fontSize:15,
+    width:"100%",
     fontStyle:"italic",
-    fontWeight:"bold",
-    color:"#450045",
-    borderWidth: 3,
+    height: 30,
     borderColor: '#450045',
+    borderWidth: 1,
     borderRadius: 25,
+    marginBottom: 15,
+    color: '#450045',
   
   }
 });
