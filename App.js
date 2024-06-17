@@ -11,6 +11,8 @@ import SignUp1Screen from "./Screens/SignUp1Screen/SignUp1Screen";
 import SignUp2HideScreen from "./Screens/SignUp2HideScreen/SignUp2HideScreen";
 import SignUp3Data1Screen from "./Screens/SignUp3Data1Screen/SignUp3Data1Screen";
 import PartnerShip1Screen from "./Screens/PartnerShip1Screen/PartnerShip1Screen";
+import { Provider } from "react-redux";
+import Store from "./store/configStore";
 
 
 const Stack = createNativeStackNavigator();
@@ -32,6 +34,7 @@ const Stack = createNativeStackNavigator();
 
   return (
     <SafeAreaProvider>
+      <Provider store={Store}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="First">
           <Stack.Screen name="First" component={FirstScreen} options={{ headerShown: false}} />
@@ -44,6 +47,7 @@ const Stack = createNativeStackNavigator();
           <Stack.Screen name="PartnerShip1" component={PartnerShip1Screen} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
+      </Provider>
     </SafeAreaProvider>
   );
 }

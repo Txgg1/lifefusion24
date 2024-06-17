@@ -10,7 +10,7 @@ function SignUp2aShowScreen() {
   return (
     <Layout>
       <View style={s.container}>
-        <Header2a txtTitle="Patricia Lifeimmo" txtSubtitle="1237" />
+        <Header2a txtTitle txtSubtitle />
         <Statistics />
         <FormSignUp2Show />
       </View>

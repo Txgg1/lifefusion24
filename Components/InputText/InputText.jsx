@@ -10,6 +10,7 @@ import { s } from "./InputText.style";
       value={value}
       onChangeText={onChangeText}
       secureTextEntry={secureTextEntry}
+      autoCapitalize="none"
     />
   );
 }
