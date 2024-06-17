@@ -1,50 +1,51 @@
-import React from "react";
+import React, { useState, useEffect, memo } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer, TransitionPresets } from "@react-navigation/native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { Provider } from "react-redux";
-import Store from "./store/configStore.jsx"
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import SplashScreen from "./Screens/SplashScreen/SplashScreen";
+import FirstScreen from "./Screens/FirstScreen/FirstScreen";
+import OnBoardingScreen from "./Screens/OnBoardingScreen/OnBoardingScreen";
+import SignUp2aShowScreen from "./Screens/SignUp2aShowScreen/SignUp2aShowScreen";
+import SignUp2sShowScreen from "./Screens/SignUp2sShowScreen/SignUp2sShowScreen";
+import SignUp1Screen from "./Screens/SignUp1Screen/SignUp1Screen";
+import SignUp2HideScreen from "./Screens/SignUp2HideScreen/SignUp2HideScreen";
+import SignUp3Data1Screen from "./Screens/SignUp3Data1Screen/SignUp3Data1Screen";
+import PartnerShip1Screen from "./Screens/PartnerShip1Screen/PartnerShip1Screen";
 
-/*  - ANCIENS SCREENS -
-    import { ConnectScreen } from "./Screens/ConnectScreen/ConnectScreen.jsx";
-    import { RegisterScreen } from "./Screens/RegisterScreen/RegisterScreen";
-    import { LoggedScreen } from "./Screens/LoggedScreen/LoggedScreen";
-*/
-
-import { OnBoardingScreen } from "./Screens/OnBoardingScreen/OnBoardingScreen.jsx";
-import { SignUp1Screen } from "./Screens/SignUp1Screen/SignUp1Screen.jsx";
-import { SignUp2HideScreen } from "./Screens/SignUp2HideScreen/SignUp2HideScreen.jsx";
-import { SignUp2ShowScreen } from "./Screens/SignUp2ShowScreen/SignUp2ShowScreen.jsx";
-import { SignUp3Data1Screen } from "./Screens/SignUp3Data1Screen/SignUp3Data1Screen.jsx";
-import { PartnerShip1Screen } from "./Screens/PartnerShip1Screen/PartnerShip1Screen.jsx";
-import { s } from "./App.style.js";
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+  function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); 
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <SplashScreen />;
+  }
+
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={s.container}>
-      <Provider store={Store}>
-        <NavigationContainer >
-          <Stack.Navigator>
-            {
-              /* - ANCIENS SCREENS -       
-                <Stack.Screen name="Connect" component={ConnectScreen} options={{headerShown:false}} /> 
-                <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown:false}}/> 
-                <Stack.Screen name="Logged" component={LoggedScreen} options={{headerShown:false}}/> 
-              */
-            }
-            <Stack.Screen name="OnBoarding" component={OnBoardingScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="SignUp1" component={SignUp1Screen} options={{ headerShown: false }} />
-            <Stack.Screen name="SignUp2Hide" component={SignUp2HideScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="SignUp2Show" component={SignUp2ShowScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="SignUp3Data1" component={SignUp3Data1Screen} options={{ headerShown: false }} />
-            <Stack.Screen name="PartnerShip1" component={PartnerShip1Screen} options={{ headerShown: false }} />
-          </Stack.Navigator>
-        </NavigationContainer>
-        </Provider>
-      </SafeAreaView>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="First">
+          <Stack.Screen name="First" component={FirstScreen} options={{ headerShown: false}} />
+          <Stack.Screen name="OnBoarding" component={OnBoardingScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="SignUp2aShow" component={SignUp2aShowScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="SignUp2sShow" component={SignUp2sShowScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="SignUp1" component={SignUp1Screen} options={{ headerShown: false}} />
+          <Stack.Screen name="SignUp2Hide" component={SignUp2HideScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="SignUp3Data1" component={SignUp3Data1Screen} options={{ headerShown: false }} />
+          <Stack.Screen name="PartnerShip1" component={PartnerShip1Screen} options={{ headerShown: false }} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
+
+export default memo(App);

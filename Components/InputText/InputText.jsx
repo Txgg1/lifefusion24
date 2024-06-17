@@ -1,11 +1,17 @@
-import React from 'react';
-import { TextInput } from 'react-native';
-import { s } from '../InputText/InputText.style';
+import React, { memo } from "react";
+import { TextInput } from "react-native";
+import { s } from "./InputText.style";
 
-export function InputText({placeholder, style, onChangeText, value}){
-    return (    
-        <TextInput style={[s.txtInput, style]} placeholder={placeholder}
-        onChangeText={onChangeText}
-        value={value}
-        autoCapitalize='none'/>        
-)}
+  function InputText({ placeholder, value, onChangeText, secureTextEntry, style }) {
+  return (
+    <TextInput
+      style={[s.txtInput, style]}
+      placeholder={placeholder}
+      value={value}
+      onChangeText={onChangeText}
+      secureTextEntry={secureTextEntry}
+    />
+  );
+}
+
+export  default React.memo(InputText);
