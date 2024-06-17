@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View } from 'react-native';
-import { Title } from '../Title/Title';
-import { Logo } from '../Logo/Logo';
-import { Subtitle } from '../Subtitle/Subtitle';
+import Title from '../Title/Title';
+import Logo from '../Logo/Logo';
+import Subtitle from '../Subtitle/Subtitle';
 import { s } from './Header.style';
 
-export function Header({ txtTitle, txtSubtitle, subtitle }) {
+    function Header({ txtTitle, txtSubtitle }) {
     return (
 
         <View style = { s.container }>
-            <Title txtTitle={txtTitle}/>
+            <Title style={s.txtTitle} txtTitle={txtTitle}/>
             <Logo />
-            <Subtitle txtSubtitle={txtSubtitle} subtitle = { subtitle }/>
+            <Subtitle style={s.txtSubtitle} txtSubtitle={txtSubtitle} />
         </View>
 
     )
 }
+
+export default React.memo(Header);
 

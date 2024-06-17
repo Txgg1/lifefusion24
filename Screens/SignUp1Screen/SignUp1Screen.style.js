@@ -2,10 +2,18 @@ import { StyleSheet } from "react-native";
 
 export const s = StyleSheet.create ({
 
-    wrap : {        
-        alignItems:"center",
-    },
-    subtitle : {
-        fontSize: 15,
-    }
-})
+  container: {
+    marginTop:"10%",
+    marginBottom:"25%",
+    width:"100%",
+    flex:1,
+    justifyContent: 'space-between',
+  },
+  contentAd: {
+    alignItems: 'center',
+    marginTop:"5%",  
+  },
+  
+  
+  
+});

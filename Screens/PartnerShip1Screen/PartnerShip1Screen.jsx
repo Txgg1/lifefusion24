@@ -1,42 +1,51 @@
-import React from "react";
-import { View,} from "react-native";
-import { Header2 } from "../../Components/Header2/Header2";
-import { FormPartnerShip1 } from "../../Components/Form/FormPartnerShip1";
+import React, { memo } from "react";
+import { View, TouchableOpacity, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { AntDesign } from '@expo/vector-icons';
-import { s } from './PartnerShip1Screen.style'
+import Layout from "../../Components/Layout/Layout";
+import Header2a from "../../Components/Header2a/Header2a";
+import Statistics from "../../Components/Statistics/Statistics";
+import CatchPhrase from "../../Components/CatchPhrase/CatchPhrase";
+import LongButton from "../../Components/Button/LongButton";
+import Qrcode from "../../Components/Qrcode/Qrcode";
+import And from "../../Components/Divider/And";
+import { s } from "./PartnerShip1Screen.style";
 
+function PartnerShip1Screen() {
 
-export function PartnerShip1Screen() {
-  const navigation = useNavigation(); 
+  const Retour = String.fromCharCode(60);
+  const catchTitle =
+    "Vous avez trouvé un nouveau collaborateur ?\nSuper !\nOffrez lui un compte exclusif lui permettant de rejoindre\nLifeFusion.\nUne application qui remunere le partenariat !";
 
-  React.useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <AntDesign
-          name="arrowleft"
-          size={24}
-          color="black"
-          style={{ marginRight: 15, fontWeight: "bold"}} // Style personnalisé pour l'icône de la flèche
-          onPress={() => navigation.goBack()} // Naviguez vers l'écran précédent lors du clic
-        />
-      ),
-      headerRight: () => (
-        <AntDesign
-          name="arrowright"
-          size={24}
-          color="black"
-          style={{ marginRight: 15, fontWeight: "bold"}} // Style personnalisé pour l'icône de la flèche
-          onPress={() => navigation.navigate('Connect')} // Naviguez vers l'écran précédent lors du clic
-        />
-      ),
-    });
-  }, [navigation]);
+  const navigation = useNavigation();
+
+  const handleSharePress = () => {
+    navigation.navigate("OnBoarding");
+  };
+  const handleQrcodePress = () => {
+    navigation.navigate("OnBoarding");
+  };
 
   return (
-    <View style = { s.container }>
-      <Header2 txtTitle="Collaborateur n°" txtSubtitle="1237"/>
-      <FormPartnerShip1 />
-    </View>
+    <Layout>
+      <View style={s.container}>
+        <Header2a txtTitle="Collaborateur n°" txtSubtitle="1237" />
+        <Statistics />
+        <View style={s.contentAd}>
+          <CatchPhrase
+            style={[s.catchTitle]}
+            txtTitle="Offrir un compte LifeFusion"
+          />
+          <CatchPhrase style={[s.catchSubtitle]} txtSubtitle={catchTitle} />
+        </View>
+        <LongButton
+          title="Partager (mail, contacts, reseaux sociaux)"
+          onPress={handleSharePress}
+        />
+        <And txtTitle="OU" txtSubtitle="Scannez vos QR CODES" />
+        <Qrcode />
+      </View>
+    </Layout>
   );
 }
+
+export default memo(PartnerShip1Screen);

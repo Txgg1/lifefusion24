@@ -1,35 +1,47 @@
-import React from 'react';
-import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { BigButton } from '../Button/BigButton';
-import { s } from './FormSignUp2Show.style';
+import React from "react";
+import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import BigButton from "../Button/BigButton";
+import Title from "../Title/Title";
+import Subtitle from "../Subtitle/Subtitle";
+import { s } from "./FormSignUp2Show.style";
 
-export function FormSignUp2Show() {
+function FormSignUp2Show() {
+  const navigation = useNavigation();
 
-    const navigation = useNavigation();
+  const handleSharePress = () => {
+    navigation.push("OnBoarding"); // Remplacer 'RegisterScreen' par le nom de votre écran d'inscription
+  };
 
-    const handleData1Press = () => {
-        navigation.push('SignUp3Data1'); // Remplacer 'ConnectScreen' par le nom de votre écran de connexion
-    };
+  const handleShipPress = () => {
+    navigation.push("PartnerShip1"); // Remplacer 'RegisterScreen' par le nom de votre écran d'inscription
+  };
 
-    const handleSharePress = () => {
-        navigation.push('PartnerShip1'); // Remplacer 'RegisterScreen' par le nom de votre écran d'inscription
-    };
-
-    const handleShipPress = () => {
-        navigation.push('PartnerShip1'); // Remplacer 'RegisterScreen' par le nom de votre écran d'inscription
-    };
-
-    return (
-
-        <View style={s.container}>
-            
-            <BigButton type="inscription" title="Données Personnelles" onPress={handleData1Press}/>
-            <BigButton type="connexion" title="Partage" onPress={handleSharePress}/>
-            <BigButton type="inscription" title="Affiliation" onPress={handleShipPress}/>
-            
-        </View>
-
-    )
+  return (
+    <View style={s.container}>
+      <View style={s.buttons}>
+        <BigButton
+          type="inscription"
+          title="Affiliation"
+          onPress={handleShipPress}
+        />
+        <BigButton
+          type="connexion"
+          title="Partage"
+          onPress={handleSharePress}
+        />
+      </View>
+      <View style={s.footer}>
+        <Title style={s.title} txtTitle={"Account valide !"} />
+        <Subtitle
+          style={s.subtitle}
+          txtSubtitle={
+            "vous pouvez acceder à toutes les fonctionnalitées de l'application"
+          }
+        />
+      </View>
+    </View>
+  );
 }
 
+export default React.memo(FormSignUp2Show);

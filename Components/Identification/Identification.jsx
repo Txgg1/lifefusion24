@@ -1,22 +1,20 @@
-// Identification.jsx
-import React from 'react';
+import React, { memo } from 'react';
 import { View } from 'react-native';
-import { Title } from '../Title/Title';
-import { Subtitle } from '../Subtitle/Subtitle';
+import Title from '../Title/Title';
+import Subtitle from '../Subtitle/Subtitle';
 import { s } from './Identification.style';
-import { connect } from 'react-redux';
 
-function Identification({ userId }) {
+    function Identification({txtTitle, txtSubtitle, style }) {
+   
+
     return (
-        <View style={s.container}>
-            <Title style={s.title} txtTitle="Collaborateur n°" />
-            <Subtitle style={s.subtitle} txtSubtitle={userId ? userId.toString() : "N/A"} />    
+
+        <View style = {[s.container, style]}>
+           <Title style = {s.title} txtTitle={txtTitle} />
+           <Subtitle style = {s.subtitle} txtSubtitle={txtSubtitle} />    
         </View>
-    );
+
+    )
 }
 
-const mapStateToProps = (state) => ({
-    userId: state.user.userId,
-});
-
-export default connect(mapStateToProps)(Identification);
+export default React.memo(Identification);
