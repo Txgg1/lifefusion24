@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import { View, TouchableOpacity, Text, Alert, Share } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Layout from "../../Components/Layout/Layout";
 import Header2a from "../../Components/Header2a/Header2a";
@@ -9,8 +9,9 @@ import LongButton from "../../Components/Button/LongButton";
 import Qrcode from "../../Components/Qrcode/Qrcode";
 import And from "../../Components/Divider/And";
 import { s } from "./PartnerShip1Screen.style";
+import { connect } from 'react-redux';
 
-function PartnerShip1Screen() {
+function PartnerShip1Screen({user}) {
 
   const Retour = String.fromCharCode(60);
   const catchTitle =
@@ -18,9 +19,26 @@ function PartnerShip1Screen() {
 
   const navigation = useNavigation();
 
-  const handleSharePress = () => {
-    navigation.navigate("OnBoarding");
+  const handleSharePress = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          'Découvrez LifeFusion ! Une application qui rémunère le partenariat. Offrez un compte exclusif à vos nouveaux collaborateurs.',
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // partagée avec le type d'activité result.activityType
+        } else {
+          // partagée
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // annulée
+      }
+    } catch (error) {
+      Alert.alert(error.message);
+    }
   };
+
   const handleQrcodePress = () => {
     navigation.navigate("OnBoarding");
   };
@@ -28,7 +46,7 @@ function PartnerShip1Screen() {
   return (
     <Layout>
       <View style={s.container}>
-        <Header2a txtTitle="Collaborateur n°" txtSubtitle="1237" />
+        <Header2a txtTitle={user.username} txtSubtitle={user.userId} />
         <Statistics />
         <View style={s.contentAd}>
           <CatchPhrase
@@ -38,7 +56,7 @@ function PartnerShip1Screen() {
           <CatchPhrase style={[s.catchSubtitle]} txtSubtitle={catchTitle} />
         </View>
         <LongButton
-          title="Partager (mail, contacts, reseaux sociaux)"
+          title="Partager (mail, contacts, réseaux sociaux)"
           onPress={handleSharePress}
         />
         <And txtTitle="OU" txtSubtitle="Scannez vos QR CODES" />
@@ -48,4 +66,8 @@ function PartnerShip1Screen() {
   );
 }
 
-export default memo(PartnerShip1Screen);
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(memo(PartnerShip1Screen));

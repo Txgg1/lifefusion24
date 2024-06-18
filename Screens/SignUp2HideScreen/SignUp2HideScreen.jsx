@@ -5,8 +5,9 @@ import Header from "../../Components/Header/Header";
 import FormSignUp2Hide from "../../Components/Form/FormSignUp2Hide";
 import Layout from "../../Components/Layout/Layout";
 import { s } from "./SignUp2HideScreen.style";
+import { connect } from "react-redux";
 
-function SignUp2HideScreen() {
+function SignUp2HideScreen({user}) {
   const navigation = useNavigation();
 
   return (
@@ -30,5 +31,9 @@ function SignUp2HideScreen() {
     </Layout>
   );
 }
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 
-export default memo(SignUp2HideScreen);
+
+export default connect(mapStateToProps)(memo(SignUp2HideScreen));
