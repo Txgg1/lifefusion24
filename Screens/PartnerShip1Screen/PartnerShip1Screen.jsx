@@ -39,9 +39,9 @@ function PartnerShip1Screen({user}) {
     }
   };
 
-  const handleQrcodePress = () => {
-    navigation.navigate("OnBoarding");
-  };
+  // const handleQrcodePress = () => {
+  //   navigation.navigate("OnBoarding");
+  // };
 
   return (
     <Layout>

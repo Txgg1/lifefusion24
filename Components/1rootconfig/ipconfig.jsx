@@ -1,3 +1,3 @@
-const config = 'http://192.168.31.26:8080'
+const config = 'http://192.168.1.121:8080'
 
 export default config;

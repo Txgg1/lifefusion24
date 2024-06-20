@@ -8,14 +8,15 @@ import CatchPhrase from "../../Components/CatchPhrase/CatchPhrase";
 import { useNavigation } from "@react-navigation/native";
 import Layout from "../../Components/Layout/Layout";
 import { s } from "./SignUp3Data1Screen.style";
+import { connect } from "react-redux";
 
-function SignUp3Data1Screen() {
+function SignUp3Data1Screen({user}) {
   const navigation = useNavigation();
 
   return (
     <Layout>
       <View style={s.container}>
-        <Header2s txtTitle="Collaborateur n°" txtSubtitle="1237" />
+        <Header2s txtTitle="Collaborateur n°" txtSubtitle={user.userId} />
         {/* <Statistics /> */}
         <View style={s.contentAd}>
           <CatchPhrase
@@ -33,4 +34,8 @@ function SignUp3Data1Screen() {
   );
 }
 
-export default memo(SignUp3Data1Screen);
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(memo(SignUp3Data1Screen));

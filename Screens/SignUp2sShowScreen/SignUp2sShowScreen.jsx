@@ -5,12 +5,13 @@ import FormSignUp2Show from "../../Components/Form/FormSignUp2Show";
 import Header2s from "../../Components/Header2s/Header2s";
 import Statistics from "../../Components/Statistics/Statistics";
 import { s } from "./SignUp2sShowScreen.style";
+import { connect } from "react-redux";
 
-function SignUp2sShowScreen() {
+function SignUp2sShowScreen({user}) {
   return (
     <Layout>
       <View style={s.container}>
-        <Header2s txtTitle="Patricia Lifeimmo" txtSubtitle="1237" />
+        <Header2s txtTitle={user.username} txtSubtitle={user.userId} />
         <Statistics />
         <FormSignUp2Show />
       </View>
@@ -18,4 +19,8 @@ function SignUp2sShowScreen() {
   );
 }
 
-export default React.memo(SignUp2sShowScreen);
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(React.memo(SignUp2sShowScreen));

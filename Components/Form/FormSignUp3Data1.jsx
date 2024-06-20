@@ -10,22 +10,21 @@ import { connect } from "react-redux";
 function FormSignUp3Data1({ user }) {
   const navigation = useNavigation();
   const [civilite, setCivilite] = useState('Monsieur');
-  const [username, setUsername] = useState('');
   const [address, setAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVerification, setPasswordVerification] = useState('');
 
   useEffect(() => {
     if (user) {
-      setUsername(user.username);
-      setEmail(user.email);
+      console.log("Utilisateur actuel :", user);
+    } else {
+      console.error("Utilisateur non trouvé dans le store Redux");
     }
   }, [user]);
 
   const handleValidationPress = () => {
-    if (!civilite || !username || !address || !phoneNumber || !email || !password || !passwordVerification) {
+    if (!civilite || !address || !phoneNumber || !password || !passwordVerification) {
       Alert.alert("Erreur", "Tous les champs obligatoires doivent être remplis");
       return;
     }
@@ -37,10 +36,8 @@ function FormSignUp3Data1({ user }) {
 
     const userData = {
       civilite,
-      username,
       address,
       phoneNumber,
-      email,
       password,
     };
 
@@ -49,9 +46,6 @@ function FormSignUp3Data1({ user }) {
       Alert.alert("Erreur", "ID utilisateur non défini ou invalide");
       return;
     }
-
-    console.log("Envoi des données utilisateur :", userData);
-    console.log("ID utilisateur :", user.userId);
 
     fetch(`${config}/utilisateurs/${user.userId}`, {
       method: "PATCH",
@@ -62,7 +56,6 @@ function FormSignUp3Data1({ user }) {
     })
       .then((response) => {
         if (!response.ok) {
-          console.error("Erreur réseau :", response);
           throw new Error("Network response was not ok");
         }
         return response.json();
@@ -89,12 +82,6 @@ function FormSignUp3Data1({ user }) {
           />
         </View>
         <InputText 
-          placeholder="Votre Nom" 
-          style={[s.input, s.txtInput]} 
-          onChangeText={(text) => setUsername(text)}
-          value={username}
-        />
-        <InputText 
           placeholder="Votre Adresse" 
           style={[s.input, s.txtInput]} 
           onChangeText={(text) => setAddress(text)}
@@ -105,12 +92,6 @@ function FormSignUp3Data1({ user }) {
           style={[s.input, s.smallInput, s.txtInput]} 
           onChangeText={(text) => setPhoneNumber(text)}
           value={phoneNumber}
-        />
-        <InputText 
-          placeholder="Votre Email" 
-          style={[s.input, s.txtInput]} 
-          onChangeText={(text) => setEmail(text)}
-          value={email}
         />
         <InputText 
           placeholder="Votre Password" 
@@ -141,7 +122,7 @@ function FormSignUp3Data1({ user }) {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user, // Supposons que l'utilisateur soit stocké sous state.user
 });
 
-export default connect(mapStateToProps)(React.memo(FormSignUp3Data1));
+export default connect(mapStateToProps)(FormSignUp3Data1);

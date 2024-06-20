@@ -5,9 +5,9 @@ import { FormPartnerShip1 } from "../../Components/Form/FormPartnerShip1";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons';
 import { s } from './PartnerShip1Screen.style'
+import { connect } from "react-redux";
 
-
-export function PartnerShip1Screen() {
+export function PartnerShip1Screen({user}) {
   const navigation = useNavigation(); 
 
   React.useLayoutEffect(() => {

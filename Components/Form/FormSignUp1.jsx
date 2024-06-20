@@ -24,15 +24,13 @@ function FormSignUp1({ setUser }) {
       Alert.alert("Erreur", "Les mots de passe ne correspondent pas");
       return;
     }
-
-    // Données à envoyer à l'API
+  
     const userData = {
       username,
       email,
       password,
     };
-
-    // Requête pour envoyer les données à l'API
+  
     fetch(`${config}/utilisateurs`, {
       method: "POST",
       headers: {
@@ -46,16 +44,21 @@ function FormSignUp1({ setUser }) {
         }
         return response.json();
       })
-      .then((data) => {
-        Alert.alert("Succès", "Inscription réussie");
+      .then((data) => { 
+        console.log("Utilisateur enregistré :", data);
+        if (!data || !data.userId) {
+          throw new Error("Invalid user data");
+        }
         setUser(data); // Met à jour le store Redux avec l'utilisateur enregistré
-        navigation.navigate("SignUp2Hide");
+        Alert.alert("Succès", "Inscription réussie");
+        navigation.navigate("SignUp3Data1");
       })
       .catch((error) => {
         console.error("Erreur lors de l'inscription:", error);
         Alert.alert("Erreur", "Une erreur est survenue lors de l'inscription");
       });
   };
+  
 
   return (
     <View style={s.container}>
