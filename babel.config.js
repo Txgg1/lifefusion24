@@ -7,5 +7,15 @@ module.exports = function(api) {
         plugins: ['react-native-paper/babel'],
       },
     },
+    plugins: [
+      '@babel/plugin-transform-logical-assignment-operators',
+      '@babel/plugin-transform-optional-chaining',
+      '@babel/plugin-transform-numeric-separator',
+      '@babel/plugin-transform-async-generator-functions',
+      ['@babel/plugin-transform-class-properties', { 'loose': true }],
+      '@babel/plugin-transform-nullish-coalescing-operator',
+      '@babel/plugin-transform-optional-catch-binding',
+      '@babel/plugin-transform-object-rest-spread'
+    ]
   };
 };

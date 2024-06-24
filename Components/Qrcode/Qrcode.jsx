@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Modal, Dimensions } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import { s } from './Qrcode.style';
-// import ScreenBrightness from 'react-native-screen-brightness';
+
 
 
 const { width } = Dimensions.get('window');
@@ -13,12 +13,7 @@ function Qrcode() {
   const [selectedQrData, setSelectedQrData] = useState(null);
   const modalQrSize = width * 0.7;
 
-  // useEffect(() => {
-  //   // Réinitialiser la luminosité lorsque le composant se démonte
-  //   return () => {
-  //     ScreenBrightness.setBrightness(0); // Réinitialiser à la luminosité par défaut du système
-  //   };
-  // }, []);
+
 
   const qrCodes = [
     { id: 1, data: 'Lien ou données pour l’application' },
@@ -28,14 +23,12 @@ function Qrcode() {
   const handleQrPress = (data) => {
     setSelectedQrData(data);
     setIsModalVisible(true);
-    // ScreenBrightness.setBrightness(1); // Définir la luminosité à 100% lorsque le modal s'ouvre
 
   };
 
   const closeModal = () => {
     setIsModalVisible(false);
     setSelectedQrData(null);
-    // ScreenBrightness.setBrightness(0); // Réinitialiser la luminosité lorsque le modal se ferme
 
   };
 
