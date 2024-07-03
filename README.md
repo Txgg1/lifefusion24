@@ -1,4 +1,4 @@
-/**
+
          --- LifeFusion ---
  
   Dans le cadre du projet de fin d'etudes du diplome:
