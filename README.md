@@ -27,6 +27,6 @@
 
     Agence: LifeImmo
     
-    Tuteur du stage: Stephane Romeo - Président de la societé immobiliaire LifeImmo
+    Tuteur du stage: Stephane Romeo - Président de la societé immobiliere LifeImmo
     
     Superviseur du projet: Patricia Pfleger
