@@ -20,6 +20,7 @@
   * Auteurs:
 
     Sitki : Partie Conception BDD - Developpement Api Java ( SpringBoot ) - Gestion Back-End, Front-End et BDD ( JAVA - React Native Expo et PhpMyAdmin )
+
     Arno : Partie Gestion Projet KANBAN ( Trello ) Conception du Design ( Figma ), Prototypage, Logos, Icones ( Illustrator, Figma ), et Front-End ( React Native Expo )
 
   * Mandataire:
