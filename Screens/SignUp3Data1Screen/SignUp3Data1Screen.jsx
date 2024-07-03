@@ -1,4 +1,35 @@
-import React, { memo } from "react";
+/**
+         --- SignUp3Data1Screen.jsx ---
+
+  * Description:
+
+    Ce fichier définit le composant d'écran `SignUp3Data1Screen`, qui est une étape du processus d'inscription.
+    Cet écran permet aux utilisateurs de renseigner leurs données personnelles après avoir rejoint l'application.
+
+  * Props:
+    Aucune
+
+  * Variables:
+  
+    navigation: Utilise le hook `useNavigation` de `@react-navigation/native` pour permettre la navigation entre les écrans.
+
+  * Composants:
+  
+    Layout: Composant de mise en page enveloppant l'écran pour appliquer une structure et des styles  cohérents
+    Permet de definir un Background personnalisé pour chaque ecran ou utiliser un background unique pour tous les ecrans.
+    View: Conteneur principal pour structurer les éléments internes de l'écran.
+    Header2s: Composant d'en-tête affichant le titre et le sous-titre.
+    CatchPhrase: Composant affichant des phrases d'accroche pour guider l'utilisateur.
+    FormSignUp3Data1: Formulaire pour que l'utilisateur renseigne ses données personnelles.
+  
+  * Fonctions:
+  
+    SignUp3Data1Screen: Fonction principale qui rend l'interface utilisateur de l'écran `SignUp3Data1Screen`.
+    Ici on memorise l'export avec React.memo
+
+**/
+
+import React from "react";
 import { View } from "react-native";
 import Header2s from "../../Components/Header2s/Header2s";
 import Statistics from "../../Components/Statistics/Statistics";
@@ -33,4 +64,4 @@ function SignUp3Data1Screen() {
   );
 }
 
-export default memo(SignUp3Data1Screen);
+export default React.memo(SignUp3Data1Screen);

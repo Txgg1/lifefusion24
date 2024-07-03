@@ -1,10 +1,43 @@
-import React, { memo } from "react";
+/**
+          --- FirstScreen.jsx ---
+
+  * Description:
+
+    Ce fichier définit le composant d'écran `FirstScreen`, qui accueille les utilisateurs sur LifeFusion
+    et leur permet de se connecter ou de s'inscrire en naviguant vers l'écran d'embarquement.
+
+  * Props:
+
+    navigation: Objet de navigation fourni par React Navigation pour permettre la navigation entre les écrans.
+
+  * Variables:
+
+    txtSubtitle: Texte d'accroche pour le sous-titre du Header.
+    backgroundImage: Chemin vers l'image de fond utilisée pour l'écran d'accueil.
+
+  * Composants:
+
+    Layout: Composant de mise en page enveloppant l'écran pour appliquer une structure et des styles cohérents, avec une image de fond.
+    View: Conteneur principal pour structurer les éléments internes de l'écran.
+    Header: Composant d'en-tête affichant le titre et le sous-titre de bienvenue.
+    CatchPhrase: Composant affichant des phrases d'accroche pour guider l'utilisateur.
+    Button: Bouton permettant de naviguer vers l'écran de connexion ou d'inscription.
+
+  * Fonctions:
+
+    FirstScreen: Fonction principale qui rend (génère) l'interface utilisateur de l'écran `FirstScreen`.
+    handleConnexionPress: Fonction de gestion de l'événement pour naviguer vers l'écran `OnBoarding` pour la connexion.
+    handleInscriptionPress: Fonction de gestion de l'événement pour naviguer vers l'écran `OnBoarding` pour l'inscription.
+
+**/
+
+import React from "react";
 import { View} from "react-native";
 import Header from "../../Components/Header/Header";
 import Button from "../../Components/Button/Button";
 import Layout from "../../Components/Layout/Layout";
 import CatchPhrase from "../../Components/CatchPhrase/CatchPhrase";
-import backgroundImage from '../../Assets/Bg2.png'; // Chemin vers votre image de fond
+import backgroundImage from '../../Assets/Bg2.png';
 
 import { s } from "./FirstScreen.style";
 
@@ -27,7 +60,6 @@ import { s } from "./FirstScreen.style";
         <View style={s.contentHeader}>
           <Header
             txtTitle="Bienvenue sur LifeFusion"
-            // txtSubtitle={"Partagez vos opportunités immobilières," +"\n"+"créez des synergies."}
             txtSubtitle={txtSubtitle}
 
           />

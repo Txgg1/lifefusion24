@@ -1,4 +1,35 @@
-import React, { memo } from "react";
+/**
+          --- Button.jsx ---
+
+  * Description:
+
+    Ce fichier définit le composant `Button`, qui affiche un bouton avec un titre, utilisé pour différentes actions
+    telles que l'inscription ou la connexion, avec des styles basés sur le type de bouton.
+
+  * Props:
+
+    type: Type du bouton, déterminant le style (inscription ou connexion).
+    title: Texte du bouton à afficher.
+    onPress: Fonction appelée lorsque le bouton est pressé.
+    style: Style supplémentaire appliqué au bouton.
+
+  * Variables:
+
+    buttonstyle: Style du bouton basé sur le type (inscription ou connexion).
+    textstyle: Style du texte basé sur le type (inscription ou connexion).
+
+  * Composants:
+
+    TouchableOpacity: Composant de react-native cliquable pour gérer les interactions utilisateur.
+    Text: Composant de react-native affichant le texte du bouton.
+
+  * Fonctions:
+
+    Button: Fonction principale qui rend (génère) l'interface utilisateur du composant `Button`.
+
+**/
+
+import React from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { s } from "./Button.style";
 

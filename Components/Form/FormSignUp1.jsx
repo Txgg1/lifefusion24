@@ -1,4 +1,33 @@
-import React, { memo } from "react";
+/**
+          --- FormSignUp1.jsx ---
+
+  * Description:
+
+    Ce fichier définit le composant `FormSignUp1`, qui affiche un formulaire permettant aux utilisateurs
+    de saisir leur nom, le code du parrain et le code d'inscription, avec un bouton pour valider la préinscription.
+
+  * Props:
+    Aucune
+
+  * Variables:
+
+    - navigation: Hook de navigation pour gérer la navigation entre les écrans.
+    - handleConnexionPress: Fonction de gestion de l'événement pour naviguer vers l'écran `SignUp2Hide`.
+
+  * Composants:
+
+    View: Conteneur principal pour structurer les éléments internes du formulaire.
+    InputText: Composant de saisie de texte pour les champs du formulaire.
+    Button: Bouton pour valider et soumettre le formulaire.
+
+  * Fonctions:
+
+    FormSignUp1: Fonction principale qui rend (génère) l'interface utilisateur du composant `FormSignUp1`.
+    handleConnexionPress: Fonction de gestion de l'événement pour naviguer vers l'écran `SignUp2Hide`.
+
+**/
+
+import React from "react";
 import { View } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import InputText  from "../InputText/InputText";

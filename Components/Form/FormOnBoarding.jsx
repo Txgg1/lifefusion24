@@ -1,4 +1,43 @@
-import React, { useState, memo } from "react";
+/**
+          --- FormOnBoarding.jsx ---
+
+  * Description:
+
+    Ce fichier définit le composant `FormOnBoarding`, qui affiche un formulaire permettant aux utilisateurs
+    de se connecter ou de s'inscrire avec leurs identifiants, incluant des champs de saisie pour l'email et le mot de passe,
+    ainsi que des boutons de connexion et d'inscription.
+
+  * Props:
+    Aucune
+
+  * Variables:
+
+    - navigation: Hook de navigation pour gérer la navigation entre les écrans.
+    - handleInscriptionPress: Fonction de gestion de l'événement pour naviguer vers l'écran `SignUp1`.
+    - handleConnexionPress: Fonction de gestion de l'événement pour naviguer vers l'écran `SignUp2aShow`.
+
+  * Composants:
+
+    View: Conteneur principal pour structurer les éléments internes du formulaire.
+    InputText: Composant de saisie de texte pour les champs email et mot de passe.
+    Button: Boutons pour valider la connexion et l'inscription.
+    Divider: Composant pour séparer visuellement les sections du formulaire.
+    CatchPhrase: Composant affichant des phrases d'accroche.
+    Text: Composant affichant du texte, utilisé ici pour le label de la case à cocher (actuellement commentée).
+
+  * Fonctions:
+
+    FormOnBoarding: Fonction principale qui rend (génère) l'interface utilisateur du composant `FormOnBoarding`.
+    handleInscriptionPress: Fonction de gestion de l'événement pour naviguer vers l'écran `SignUp1`.
+    handleConnexionPress: Fonction de gestion de l'événement pour naviguer vers l'écran `SignUp2aShow`.
+
+  * TODO:
+
+    Implémenter la case à cocher utilisant la bibliothèque `react-native-paper` lorsque le problème de chargement sera résolu.
+
+**/
+
+import React, { useState } from "react";
 import { View, Text} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 // import { Checkbox, Text } from "react-native-paper";

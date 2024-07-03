@@ -1,3 +1,19 @@
+/**
+          --- InputText.style.js ---
+
+* Description:
+  
+  Ce fichier définit les styles utilisés pour le composant `InputText`.
+  Il utilise `StyleSheet` de React Native pour créer des styles réutilisables et modulaires.
+  On exporte une constante `s` pour gérer les styles dans les fichiers .jsx.
+
+* Styles utilisés:
+
+  txtInput: Style appliqué au champ de saisie de texte, définissant la largeur, l'alignement du texte, la couleur, la taille de la police, le remplissage, la bordure et le rayon de bordure.
+
+**/
+
+
 import { StyleSheet } from "react-native";
 
 export const s = StyleSheet.create({
